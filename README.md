@@ -1,5 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/0b2d8b80-6917-41dd-89aa-2745d19ed897/deploy-status)](https://app.netlify.com/sites/cranky-lumiere-6d3d20/deploys)
 
+
+[live](https://f-music.netlify.app/)
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
