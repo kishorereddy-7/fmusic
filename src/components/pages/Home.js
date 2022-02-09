@@ -9,7 +9,7 @@ function Home() {
 
     useEffect(()=> {
       async function fetchSongs() {
-        const { data } = await axios.get('http://127.0.0.1:8000/api/songs/')
+        const { data } = await axios.get('https://f-music-back.herokuapp.com/api/songs/')
         setSongs(data)
       }
       fetchSongs()
