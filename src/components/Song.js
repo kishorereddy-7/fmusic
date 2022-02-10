@@ -26,7 +26,7 @@ function Song({ song }) {
           <Button variant="primary">Add to Playlist</Button>
         </Card.Body>
       </Card>
-      </div>
+    </div>
   );
 }
 
