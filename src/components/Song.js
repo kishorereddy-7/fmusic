@@ -1,12 +1,22 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ReactAudioPlayer from "react-audio-player";
 
 function Song({ song }) {
   const mystyle = {
     width: "320px",
     height: "200px",
+  };
+
+  const myPlayList = useSelector((state) => state.myPlayList);
+  const { myPlayListItems } = myPlayList;
+
+  const navigate = useNavigate();
+
+  const addToPlayListHandler = () => {
+    navigate(`/myplaylist/${song.id}`);
   };
 
   return (
@@ -23,7 +33,15 @@ function Song({ song }) {
             <Card.Title>{song.name}</Card.Title>
           </Link>
           <Card.Text>{song.movieName}</Card.Text>
-          <Button variant="primary">Add to Playlist</Button>
+          {myPlayListItems.find((x) => x.song_id === song.id) ? (
+            <Button variant="primary" onClick={addToPlayListHandler}>
+              Your PlayList Song
+            </Button>
+          ) : (
+            <Button variant="primary" onClick={addToPlayListHandler}>
+              Add to Playlist
+            </Button>
+          )}
         </Card.Body>
       </Card>
     </div>

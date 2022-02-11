@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Col, ListGroup, Button, Row, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ReactAudioPlayer from "react-audio-player";
@@ -10,13 +10,23 @@ import Message from "../components/Message";
 
 function SingleSong() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const myPlayList = useSelector((state) => state.myPlayList);
+  const { myPlayListItems } = myPlayList;
+
   const songDetails = useSelector((state) => state.songDetails);
   const { loading, error, song } = songDetails;
 
   useEffect(() => {
     dispatch(listSongDetails(id));
   }, [dispatch, id]);
+
+  const addToPlayListHandler = () => {
+    navigate(`/myplaylist/${id}`);
+  };
+
   return (
     <div>
       <Link to="/" className="btn btn-light my-3">
@@ -43,7 +53,15 @@ function SingleSong() {
             </ListGroup>
           </Col>
           <Col md={3}>
-            <Button variant="primary">Add to Playlist</Button>
+            {myPlayListItems.find((x) => x.song_id === song.id) ? (
+              <Button variant="primary" onClick={addToPlayListHandler}>
+                Your PlayList Song
+              </Button>
+            ) : (
+              <Button variant="primary" onClick={addToPlayListHandler}>
+                Add to Playlist
+              </Button>
+            )}
           </Col>
         </Row>
       )}
