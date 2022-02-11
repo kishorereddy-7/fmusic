@@ -13,7 +13,7 @@ function Header() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <LinkContainer to="/playlist">
+              <LinkContainer to="/myplaylist">
                 <Nav.Link>
                   <i className="fas fa-music"></i>MyPlayList
                 </Nav.Link>
