@@ -32,14 +32,14 @@ function MyPlayList() {
   return (
     <Container>
       <Row>
-        <Col md={8}>
+        <Col>
           <h1>MyPlayList</h1>
           {myPlayListItems.length === 0 ? (
             <Message variant="info">
               Your PlayList is empty <Link to="/">Go Back</Link>
             </Message>
           ) : (
-            <Container>
+            <div>
               <h2>PlayList Songs {myPlayListItems.length}</h2>
               <ListGroup variant="flush">
                 {myPlayListItems.map((item) => (
@@ -70,11 +70,11 @@ function MyPlayList() {
                   </ListGroup.Item>
                 ))}
               </ListGroup>
-            </Container>
+            </div>
           )}
         </Col>
       </Row>
-    </Container>
+      </Container>
   );
 }
 
